@@ -85,11 +85,8 @@ int wmain(int argc, wchar_t const *argv[])
     SetConsoleTitleW(DistributionInfo::WindowTitle.c_str());
 
     // Initialize a vector of arguments.
-    std::vector<std::wstring_view> arguments;
-    for (int index = 1; index < argc; index += 1)
-    {
-        arguments.push_back(argv[index]);
-    }
+    std::vector<std::wstring_view> arguments(argv, argc + argv);
+    agruments.erase(arguments.begin());
 
     // Ensure that the Windows Subsystem for Linux optional component is installed.
     DWORD exitCode = 1;
